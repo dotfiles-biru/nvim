@@ -1,31 +1,26 @@
+local servers = require("config.lsp.servers")
+
 return {
 	{
 		"mason-org/mason.nvim",
-		opts = {},
+		lazy = false,
 		config = function()
 			require("mason").setup()
 		end,
 	},
 	{
 		"mason-org/mason-lspconfig.nvim",
-		opts = {},
+		lazy = false,
+		opts = {
+			auto_install = true,
+		},
 		dependencies = {
 			{ "mason-org/mason.nvim", opts = {} },
 			"neovim/nvim-lspconfig",
 		},
 		config = function()
 			require("mason-lspconfig").setup({
-				ensure_installed = {
-					"lua_ls", -- lua
-					"ts_ls", -- typescript
-					"docker_compose_language_service", -- docker compose
-					"docker_language_server", -- dockerfile
-					"dockerls", -- docker
-					"eslint", -- javascript & typescript
-					"gopls", -- go
-					"rust_analyzer", -- rust
-					"shuck", -- bash & sh
-				},
+				ensure_installed = servers,
 			})
 		end,
 	},
@@ -33,6 +28,15 @@ return {
 		"neovim/nvim-lspconfig",
 		config = function()
 			vim.lsp.enable("lua_ls")
+			local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
+			for _, server in ipairs(servers) do
+				vim.lsp.config(server, {
+					capabilities = capabilities,
+				})
+
+				vim.lsp.enable(server)
+			end
 		end,
 	},
 }
