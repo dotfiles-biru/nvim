@@ -3,12 +3,11 @@ return {
   lazy = false,
   build = ':TSUpdate',
   config = function()
-    require('nvim-treesitter').install({
-      'lua',
-      'javascript',
-      'typescript',
-      'python',
-      'rust',
-    })
+      local config = require("nvim-treesitter")
+      config.setup({
+        auto_install = true,
+        highlight = { enable = true },
+        indent = { enable = true },
+      })
   end,
 }
