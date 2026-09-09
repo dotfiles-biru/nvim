@@ -8,7 +8,8 @@ map("n", "gd", vim.lsp.buf.definition, {})
 map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, {})
 
 -- neo-tree
-vim.keymap.set("n", "<C-n>", ":Neotree filesystem reveal left<CR>", {})
+map("n", "<C-n>", ":Neotree filesystem reveal left<CR>", {})
+map("n", "<C-b>", ":Neotree close<CR>", {})
 
 -- telescope
 local builtin = require("telescope.builtin")
