@@ -9,7 +9,7 @@ map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, {})
 
 -- neo-tree
 map("n", "<C-n>", ":Neotree filesystem reveal left<CR>", {})
-map("n", "<C-b>", ":Neotree close<CR>", {})
+map("n", "<C-c>", ":Neotree close<CR>", {})
 
 -- telescope
 local builtin = require("telescope.builtin")
@@ -20,6 +20,8 @@ map("n", "<leader>fh", builtin.help_tags, { desc = "Telescope help tags" })
 
 -- none-ls
 map("n", "<leader>gf", vim.lsp.buf.format, {})
+
+map("n", "<leader>lg", ":LazyGit<CR>", {})
 
 -- debugging
 map("n", "<F5>", function()
