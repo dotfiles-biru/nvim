@@ -29,6 +29,13 @@ map("n", "<leader>gf", vim.lsp.buf.format, {})
 
 map("n", "<leader>lg", ":LazyGit<CR>", {})
 
+-- vim test
+map("n", "<leader>t", ":TestNearest<CR>")
+map("n", "<leader>T", ":TestFile<CR>")
+map("n", "<leader>a", ":TestSuite<CR>")
+map("n", "<leader>l", ":TestLast<CR>")
+map("n", "<leader>g", ":TestVisit<CR>")
+
 -- debugging
 map("n", "<F5>", function()
 	require("dap").continue()
