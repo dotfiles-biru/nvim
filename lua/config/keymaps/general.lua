@@ -14,6 +14,12 @@ map("n", "<C-c>", ":Neotree close<CR>", {})
 -- telescope
 local builtin = require("telescope.builtin")
 map("n", "<leader>ff", builtin.find_files, { desc = "Telescope find files" })
+vim.keymap.set('n', '<leader>fF', function()
+  builtin.find_files({
+    hidden = true,
+    no_ignore = true, 
+  })
+end, { desc = 'Find All Files (including hidden)' })
 map("n", "<leader>fg", builtin.live_grep, { desc = "Telescope live grep" })
 map("n", "<leader>fb", builtin.buffers, { desc = "Telescope buffers" })
 map("n", "<leader>fh", builtin.help_tags, { desc = "Telescope help tags" })
